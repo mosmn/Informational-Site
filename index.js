@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const http = require('http');
 const fs = require('fs');
-const url = require('node:url');
 
 const hostname = 'localhost';
 const port = 8080;
@@ -21,6 +20,7 @@ const server = http.createServer((req, res) => {
         filePath += '404.html';
     }
 
+    res.writeHead(200, { 'Content-Type': 'text/html' });
     fs.readFile(filePath, (err, data) => {
         if (err) {
             console.log(err);
